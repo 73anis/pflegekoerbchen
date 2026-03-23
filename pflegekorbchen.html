@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Pflegekörbchen – Kostenlose Pflegehilfsmittel jeden Monat</title>
+<meta name="description" content="Als Person mit Pflegegrad haben Sie Anspruch auf bis zu 42 € monatlich für Pflegehilfsmittel – vollständig von der Pflegekasse übernommen. Wir beantragen alles für Sie."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --g900:#0D3327;--g700:#1B5E48;--g500:#2A8C6B;--g300:#7DC5A9;--g100:#C8EBE0;--g50:#EBF6F1;
+  --amber:#B86A1E;--amber-bg:#FDF3E7;
+  --cream:#F7F4EF;--white:#FFFFFF;
+  --ink:#1A1917;--mid:#4B4845;--muted:#8A8680;--border:#E0DBD4;
+  --r:12px;--rl:20px;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);line-height:1.7;-webkit-font-smoothing:antialiased}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:999;background:rgba(247,244,239,0.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:0 1.25rem}
+.nav-in{max-width:1060px;margin:0 auto;height:62px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--g700);text-decoration:none;letter-spacing:-0.02em}
+.logo span{color:var(--amber)}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--g700);color:#fff;text-decoration:none;font-size:0.875rem;font-weight:500;padding:11px 24px;border-radius:100px;transition:background .2s,transform .15s;border:none;cursor:pointer;font-family:'DM Sans',sans-serif}
+.btn:hover{background:var(--g900);transform:translateY(-1px)}
+.btn-lg{font-size:1rem;padding:15px 34px}
+.btn-outline{background:transparent;color:var(--g700);border:1.5px solid var(--g700)}
+.btn-outline:hover{background:var(--g50);transform:translateY(-1px)}
+
+/* HERO */
+.hero{background:var(--white);padding:4.5rem 1.25rem 4rem}
+.hero-in{max-width:1060px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center}
+.pill{display:inline-flex;align-items:center;gap:7px;background:var(--g50);color:var(--g700);border:1px solid var(--g100);font-size:0.78rem;font-weight:500;padding:5px 14px;border-radius:100px;margin-bottom:1.4rem;letter-spacing:0.03em}
+.pill::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--g500);flex-shrink:0}
+h1{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,3.5vw,2.8rem);font-weight:700;line-height:1.18;letter-spacing:-0.03em;margin-bottom:1.1rem}
+h1 em{font-style:normal;color:var(--g700)}
+.hero-sub{font-size:1.02rem;color:var(--mid);line-height:1.75;margin-bottom:2rem;max-width:460px}
+.hero-actions{display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.trust-micro{margin-top:1.25rem;display:flex;gap:1.5rem;flex-wrap:wrap}
+.trust-micro span{font-size:0.8rem;color:var(--muted);display:flex;align-items:center;gap:5px}
+.trust-micro span::before{content:'✓';color:var(--g500);font-weight:600}
+
+/* HERO CARD */
+.card-box{background:var(--g50);border:1px solid var(--g100);border-radius:var(--rl);padding:1.75rem;position:relative;overflow:hidden}
+.card-box::before{content:'';position:absolute;top:-40px;right:-40px;width:120px;height:120px;border-radius:50%;background:var(--g100);opacity:0.5}
+.card-tag{font-size:0.7rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--g700);margin-bottom:0.6rem}
+.card-box h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:600;margin-bottom:0.2rem}
+.card-sub{font-size:0.82rem;color:var(--muted);margin-bottom:1.4rem}
+.items{list-style:none;display:flex;flex-direction:column;gap:0.55rem;margin-bottom:1.4rem}
+.items li{font-size:0.88rem;color:var(--mid);display:flex;align-items:flex-start;gap:9px}
+.items li::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--g500);margin-top:9px;flex-shrink:0}
+.items li.special{color:var(--g700);font-weight:500;border-top:1px dashed var(--g300);padding-top:0.55rem;margin-top:0.2rem}
+.items li.special::before{background:var(--amber)}
+.price-row{background:var(--g700);color:#fff;border-radius:var(--r);padding:1rem 1.25rem;display:flex;align-items:center;justify-content:space-between}
+.price-row .pl{font-size:0.82rem;opacity:0.8}
+.price-row .pr{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700}
+
+/* TRUST BAR */
+.trust-bar{background:var(--g700);padding:1.75rem 1.25rem}
+.trust-grid{max-width:1060px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;text-align:center}
+.t-item .num{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:#fff;line-height:1}
+.t-item .lbl{font-size:0.78rem;color:rgba(255,255,255,0.7);margin-top:0.3rem;line-height:1.4}
+
+/* GENERIC SECTION */
+section.light{background:var(--white)}
+section.cream{background:var(--cream)}
+.wrap{max-width:1060px;margin:0 auto;padding:5rem 1.25rem}
+.sec-label{font-size:0.72rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--g500);margin-bottom:0.65rem}
+h2{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,2.8vw,2.1rem);font-weight:700;line-height:1.25;letter-spacing:-0.025em;margin-bottom:1rem}
+.sec-desc{font-size:1rem;color:var(--mid);max-width:580px;margin-bottom:3rem}
+
+/* ANSPRUCH */
+.anspruch-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start}
+.anspruch-text p{color:var(--mid);margin-bottom:1rem;font-size:0.97rem;line-height:1.8}
+.check-list{list-style:none;display:flex;flex-direction:column;gap:0.75rem;margin-top:1.5rem}
+.check-list li{display:flex;align-items:flex-start;gap:12px;font-size:0.95rem;color:var(--mid)}
+.check-list li span.icon{width:22px;height:22px;border-radius:50%;background:var(--g100);color:var(--g700);display:flex;align-items:center;justify-content:center;font-size:0.75rem;flex-shrink:0;margin-top:2px;font-weight:700}
+.info-box{background:var(--amber-bg);border:1px solid #F0CEAA;border-radius:var(--rl);padding:2rem}
+.info-box .ib-label{font-size:0.72rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--amber);margin-bottom:0.75rem}
+.info-box h3{font-family:'Playfair Display',serif;font-size:1.15rem;color:var(--ink);margin-bottom:0.75rem}
+.info-box p{font-size:0.9rem;color:var(--mid);line-height:1.75}
+
+/* KÖRBCHEN */
+.korbchen-wrap{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:center}
+.korbchen-card{background:var(--white);border:2px solid var(--g700);border-radius:var(--rl);padding:2rem;position:relative}
+.best-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--g700);color:#fff;font-size:0.72rem;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;padding:5px 16px;border-radius:100px;white-space:nowrap}
+.korbchen-card h3{font-family:'Playfair Display',serif;font-size:1.3rem;margin-bottom:0.2rem;margin-top:0.5rem}
+.korbchen-card .ksub{font-size:0.85rem;color:var(--muted);margin-bottom:1.5rem}
+.prod-list{list-style:none;display:flex;flex-direction:column;gap:0.7rem;margin-bottom:1.5rem}
+.prod-list li{display:flex;align-items:center;gap:10px;font-size:0.9rem;color:var(--mid)}
+.prod-dot{width:8px;height:8px;border-radius:50%;background:var(--g300);flex-shrink:0}
+.prod-list li.rec .prod-dot{background:var(--amber)}
+.prod-list li.rec{color:var(--amber);font-weight:500;border-top:1px dashed #F0CEAA;padding-top:0.7rem;margin-top:0.2rem}
+.korbchen-price{background:var(--g50);border:1px solid var(--g100);border-radius:var(--r);padding:1rem 1.25rem;display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem}
+.korbchen-price .kpl{font-size:0.85rem;color:var(--mid)}
+.korbchen-price .kpr{font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--g700);font-weight:700}
+.korbchen-info{font-size:0.88rem;color:var(--mid);line-height:1.75}
+.korbchen-info ul{list-style:none;display:flex;flex-direction:column;gap:0.4rem;margin-top:1rem}
+.korbchen-info ul li::before{content:'→ ';color:var(--g500)}
+
+/* STEPS */
+.steps{display:flex;flex-direction:column;gap:0;position:relative;max-width:680px;margin:0 auto}
+.steps::before{content:'';position:absolute;left:23px;top:24px;bottom:24px;width:2px;background:var(--g100)}
+.step{display:flex;gap:1.5rem;align-items:flex-start;padding:0 0 2.5rem}
+.step:last-child{padding-bottom:0}
+.step-num{width:48px;height:48px;border-radius:50%;background:var(--g700);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;flex-shrink:0;position:relative;z-index:1}
+.step-body h3{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:600;margin-bottom:0.35rem;margin-top:0.65rem}
+.step-body p{font-size:0.9rem;color:var(--mid);line-height:1.75}
+
+/* KASSEN */
+.kassen-wrap{text-align:center}
+.kassen-wrap .sec-label,.kassen-wrap h2{text-align:center}
+.kassen-wrap .sec-desc{margin:0 auto 2.5rem}
+.kassen-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:0.75rem}
+.kasse-pill{background:var(--white);border:1px solid var(--border);border-radius:100px;padding:9px 20px;font-size:0.875rem;font-weight:500;color:var(--mid)}
+
+/* FAQ */
+.faq-list{display:flex;flex-direction:column;gap:0;max-width:720px;margin:0 auto}
+.faq-item{border-bottom:1px solid var(--border)}
+.faq-item:first-child{border-top:1px solid var(--border)}
+.faq-q{width:100%;background:none;border:none;text-align:left;padding:1.25rem 0;font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:500;color:var(--ink);cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.faq-icon{width:24px;height:24px;border-radius:50%;border:1.5px solid var(--g300);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .3s,background .2s}
+.faq-icon svg{transition:transform .3s}
+.faq-item.open .faq-icon{background:var(--g700);border-color:var(--g700)}
+.faq-item.open .faq-icon svg{stroke:#fff}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq-item.open .faq-a{max-height:300px}
+.faq-a p{font-size:0.93rem;color:var(--mid);line-height:1.8;padding-bottom:1.25rem}
+
+/* REVIEWS */
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.review-card{background:var(--white);border:1px solid var(--border);border-radius:var(--rl);padding:1.75rem}
+.stars{color:var(--amber);font-size:0.9rem;margin-bottom:1rem;letter-spacing:2px}
+.review-card blockquote{font-size:0.92rem;color:var(--mid);line-height:1.8;font-style:italic;margin-bottom:1.25rem}
+.reviewer{display:flex;align-items:center;gap:10px}
+.avatar{width:38px;height:38px;border-radius:50%;background:var(--g100);display:flex;align-items:center;justify-content:center;font-size:0.8rem;font-weight:600;color:var(--g700);flex-shrink:0}
+.rev-name{font-size:0.88rem;font-weight:500;color:var(--ink)}
+.rev-loc{font-size:0.78rem;color:var(--muted)}
+
+/* CTA BLOCK */
+.cta-block{background:var(--g900);padding:5rem 1.25rem;text-align:center}
+.cta-block h2{color:#fff;margin-bottom:1rem}
+.cta-block p{color:rgba(255,255,255,0.7);max-width:480px;margin:0 auto 2rem;font-size:1rem}
+.cta-block .btn{background:#fff;color:var(--g900)}
+.cta-block .btn:hover{background:var(--g100)}
+.cta-note{margin-top:1rem;font-size:0.8rem;color:rgba(255,255,255,0.5)}
+
+/* FOOTER */
+footer{background:var(--ink);padding:3rem 1.25rem}
+.footer-in{max-width:1060px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem}
+.footer-logo{font-family:'Playfair Display',serif;font-weight:700;font-size:1.1rem;color:rgba(255,255,255,0.9)}
+.footer-logo span{color:var(--amber)}
+.footer-links{display:flex;gap:1.5rem;flex-wrap:wrap}
+.footer-links a{font-size:0.82rem;color:rgba(255,255,255,0.45);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:rgba(255,255,255,0.8)}
+.footer-copy{font-size:0.78rem;color:rgba(255,255,255,0.3);width:100%;text-align:center;margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,0.08)}
+
+/* COOKIE */
+.cookie-bar{position:fixed;bottom:1.25rem;left:1.25rem;right:1.25rem;max-width:640px;margin:0 auto;background:var(--ink);color:rgba(255,255,255,0.85);border-radius:var(--rl);padding:1.25rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;z-index:9999;flex-wrap:wrap;font-size:0.85rem;box-shadow:0 8px 40px rgba(0,0,0,0.25)}
+.cookie-bar p{flex:1;min-width:200px;line-height:1.6}
+.cookie-bar p a{color:var(--g300);text-decoration:underline}
+.cookie-actions{display:flex;gap:0.6rem;flex-shrink:0}
+.cookie-accept{background:var(--g500);color:#fff;border:none;padding:9px 20px;border-radius:100px;font-size:0.82rem;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;transition:background .2s}
+.cookie-accept:hover{background:var(--g700)}
+.cookie-decline{background:transparent;color:rgba(255,255,255,0.5);border:1px solid rgba(255,255,255,0.2);padding:9px 16px;border-radius:100px;font-size:0.82rem;cursor:pointer;font-family:'DM Sans',sans-serif;transition:color .2s}
+.cookie-decline:hover{color:rgba(255,255,255,0.85)}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .hero-in{grid-template-columns:1fr;gap:2.5rem}
+  .trust-grid{grid-template-columns:repeat(2,1fr)}
+  .anspruch-grid{grid-template-columns:1fr}
+  .korbchen-wrap{grid-template-columns:1fr}
+  .reviews-grid{grid-template-columns:1fr}
+  .wrap{padding:3.5rem 1.25rem}
+  .hero{padding:3rem 1.25rem}
+  .footer-in{flex-direction:column;align-items:flex-start;gap:1rem}
+}
+@media(max-width:480px){
+  .trust-grid{grid-template-columns:repeat(2,1fr)}
+  .hero-actions{flex-direction:column;align-items:flex-start}
+  .btn-lg{width:100%;justify-content:center}
+}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.hero-in>*{animation:fadeUp .6s ease both}
+.hero-in>*:nth-child(2){animation-delay:.15s}
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <div class="nav-in">
+    <a class="logo" href="#">Pflege<span>körbchen</span></a>
+    <a class="btn" href="#DEIN-LINK-HIER" target="_blank" rel="noopener">Jetzt beantragen</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-in">
+    <div>
+      <div class="pill">§ 40 SGB XI · Gesetzlicher Anspruch</div>
+      <h1>Ihr monatliches<br><em>Pflegekörbchen.</em><br>100 % kostenlos.</h1>
+      <p class="hero-sub">Als Person mit Pflegegrad haben Sie gesetzlichen Anspruch auf bis zu 42 € monatlich für Pflegehilfsmittel – vollständig von der Pflegekasse übernommen. Wir beantragen alles für Sie.</p>
+      <div class="hero-actions">
+        <a class="btn btn-lg" href="#DEIN-LINK-HIER" target="_blank" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          Jetzt beantragen
+        </a>
+      </div>
+      <div class="trust-micro">
+        <span>Kein Eigenanteil</span>
+        <span>Kein Papierkram</span>
+        <span>Monatlich geliefert</span>
+      </div>
+    </div>
+    <div>
+      <div class="card-box">
+        <div class="card-tag">Komfortkörbchen · Empfohlen</div>
+        <h3>Ihr monatliches Paket</h3>
+        <p class="card-sub">Vollständig kassenfinanziert · Jeden Monat frei Haus</p>
+        <ul class="items">
+          <li>Einmalhandschuhe Nitril – 2 × 100 Stk.</li>
+          <li>Bettschutzeinlagen Einmal – 25 Stk.</li>
+          <li>Händedesinfektionsmittel – 500 ml</li>
+          <li>Flächendesinfektionsmittel – 500 ml</li>
+          <li>Schutzschürzen – 100 Stk.</li>
+          <li>OP-Masken – 50 Stk.</li>
+          <li class="special">♻ Wiederverwendbare Bettschutzeinlagen – bis 5 Stk.</li>
+        </ul>
+        <div class="price-row">
+          <span class="pl">Ihr Eigenanteil</span>
+          <span class="pr">0,00 €</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-grid">
+    <div class="t-item"><div class="num">12.840</div><div class="lbl">Körbchen beantragt</div></div>
+    <div class="t-item"><div class="num">98 %</div><div class="lbl">Genehmigungsquote</div></div>
+    <div class="t-item"><div class="num">42 €</div><div class="lbl">monatlich von der Kasse</div></div>
+    <div class="t-item"><div class="num">4 WT</div><div class="lbl">bis zur ersten Lieferung</div></div>
+  </div>
+</div>
+
+<!-- ANSPRUCH -->
+<section class="light">
+  <div class="wrap">
+    <div class="anspruch-grid">
+      <div class="anspruch-text">
+        <div class="sec-label">Ihr Recht</div>
+        <h2>Wer hat Anspruch auf ein Pflegekörbchen?</h2>
+        <p>Jede Person mit einem anerkannten Pflegegrad 1–5 hat nach § 40 SGB XI gesetzlichen Anspruch auf Pflegehilfsmittel zum Verbrauch – bis zu 42 € pro Monat, vollständig von der Pflegekasse übernommen.</p>
+        <ul class="check-list">
+          <li><span class="icon">✓</span> Pflegegrad 1 bis 5 ist ausreichend</li>
+          <li><span class="icon">✓</span> Kein ambulanter Pflegedienst erforderlich</li>
+          <li><span class="icon">✓</span> Gilt für häusliche Pflege durch Angehörige</li>
+          <li><span class="icon">✓</span> Alle gesetzlichen Pflegekassen akzeptiert</li>
+          <li><span class="icon">✓</span> Kein Eigenanteil, keine versteckten Kosten</li>
+        </ul>
+      </div>
+      <div class="info-box">
+        <div class="ib-label">Gut zu wissen</div>
+        <h3>Noch keinen Pflegegrad?</h3>
+        <p>Ein Pflegegrad wird vom Medizinischen Dienst festgestellt. Der Antrag läuft über Ihre Pflegekasse. Viele Familien wissen nicht, dass ihnen dieser Anspruch zusteht – und lassen dadurch bares Geld auf der Straße liegen.</p>
+        <br/>
+        <p>Haben Sie bereits einen Pflegegrad? Dann können Sie Ihr Pflegekörbchen sofort und kostenlos beantragen.</p>
+        <br/>
+        <a class="btn btn-outline" href="#DEIN-LINK-HIER" target="_blank" rel="noopener" style="margin-top:0.5rem">Jetzt beantragen</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DAS KÖRBCHEN -->
+<section class="cream">
+  <div class="wrap">
+    <div class="sec-label">Das Komfortkörbchen</div>
+    <h2>Was ist drin – jeden Monat</h2>
+    <p class="sec-desc">Unser meistgewähltes Pflegekörbchen: umfassende Schutzausstattung mit allergikerfreundlichen Nitril-Handschuhen, vollständigem Desinfektionsschutz und Schutzschürzen.</p>
+    <div class="korbchen-wrap">
+      <div class="korbchen-card">
+        <div class="best-badge">Empfohlen</div>
+        <h3>Komfortkörbchen</h3>
+        <p class="ksub">Rundum-Versorgung für den Pflegealltag</p>
+        <ul class="prod-list">
+          <li><span class="prod-dot"></span>Einmalhandschuhe Nitril – 2 × 100 Stk. (allergikerfreundlich)</li>
+          <li><span class="prod-dot"></span>Bettschutzeinlagen Einmal – 25 Stk.</li>
+          <li><span class="prod-dot"></span>Händedesinfektionsmittel – 500 ml</li>
+          <li><span class="prod-dot"></span>Flächendesinfektionsmittel – 500 ml</li>
+          <li><span class="prod-dot"></span>Schutzschürzen Einmal – 100 Stk.</li>
+          <li><span class="prod-dot"></span>OP-Masken – 50 Stk.</li>
+          <li class="rec"><span class="prod-dot"></span>♻ Wiederverwendbare Bettschutzeinlagen – bis 5 Stk.</li>
+        </ul>
+        <div class="korbchen-price">
+          <span class="kpl">Ihr Eigenanteil</span>
+          <span class="kpr">0,00 €</span>
+        </div>
+        <a class="btn" href="#DEIN-LINK-HIER" target="_blank" rel="noopener" style="width:100%;justify-content:center">Dieses Körbchen beantragen</a>
+      </div>
+      <div class="korbchen-info">
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.15rem;margin-bottom:1rem">Warum das Komfortkörbchen?</h3>
+        <p style="font-size:0.93rem;color:var(--mid);line-height:1.8">Nitril-Handschuhe sind allergikerfreundlicher als Latex und widerstandsfähiger als Vinyl – ideal für den täglichen Pflegeeinsatz. Die wiederverwendbaren Bettschutzeinlagen werden immer mitbeantragt, damit Sie auch dann versorgt sind, wenn die Kasse Einmalartikel kürzt.</p>
+        <ul style="margin-top:1.5rem">
+          <li>Monatliche Lieferung direkt nach Hause</li>
+          <li>Kein Aufwand – wir beantragen alles</li>
+          <li>Vollständig kassenfinanziert</li>
+          <li>Genehmigung in der Regel in wenigen Werktagen</li>
+          <li>Jederzeit kündbar</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SO FUNKTIONIERTS -->
+<section class="light">
+  <div class="wrap" style="text-align:center">
+    <div class="sec-label">Wie es funktioniert</div>
+    <h2>In 5 Schritten zum Körbchen</h2>
+    <p class="sec-desc" style="margin:0 auto 3rem">Wir kümmern uns um alles – von der Auswahl bis zur Genehmigung. Sie lehnen sich zurück.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h3>Körbchen wählen</h3>
+          <p>Wählen Sie das Komfortkörbchen – unsere meistgewählte Zusammenstellung für den Pflegealltag.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h3>Daten eingeben</h3>
+          <p>Pflegegrad, Versicherungsnummer und Lieferadresse – alles digital, kein Papier, kein Aufwand.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h3>Digital unterzeichnen</h3>
+          <p>Der Antrag wird automatisch erstellt und kann bequem online unterzeichnet werden.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h3>Pflegekasse genehmigt</h3>
+          <p>Wir übermitteln den Antrag automatisch an Ihre Pflegekasse. Genehmigung meist in wenigen Werktagen.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">5</div>
+        <div class="step-body">
+          <h3>Monatliche Lieferung</h3>
+          <p>Ab der Genehmigung erhalten Sie jeden Monat automatisch Ihr Pflegekörbchen frei Haus.</p>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:3rem">
+      <a class="btn btn-lg" href="#DEIN-LINK-HIER" target="_blank" rel="noopener">Jetzt kostenlos beantragen</a>
+    </div>
+  </div>
+</section>
+
+<!-- PFLEGEKASSEN -->
+<section class="cream">
+  <div class="wrap kassen-wrap">
+    <div class="sec-label">Partnerkassen</div>
+    <h2>Wir arbeiten mit allen Pflegekassen</h2>
+    <p class="sec-desc">Egal bei welcher Kasse Sie versichert sind – wir kennen den Prozess und beantragen für Sie.</p>
+    <div class="kassen-grid">
+      <div class="kasse-pill">AOK</div>
+      <div class="kasse-pill">Techniker Krankenkasse</div>
+      <div class="kasse-pill">BARMER</div>
+      <div class="kasse-pill">DAK-Gesundheit</div>
+      <div class="kasse-pill">BKK</div>
+      <div class="kasse-pill">IKK</div>
+      <div class="kasse-pill">Knappschaft</div>
+      <div class="kasse-pill">& alle weiteren Kassen</div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="light">
+  <div class="wrap">
+    <div style="text-align:center;margin-bottom:3rem">
+      <div class="sec-label">Häufige Fragen</div>
+      <h2>Ihre Fragen – unsere Antworten</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Muss ich etwas selbst bezahlen?
+          <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+        </button>
+        <div class="faq-a"><p>Nein. Das Pflegekörbchen ist für Sie vollständig kostenlos. Die Pflegekasse übernimmt bis zu 42 € monatlich – dafür entstehen Ihnen keinerlei Kosten und auch kein Eigenanteil.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Welchen Pflegegrad brauche ich?
+          <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+        </button>
+        <div class="faq-a"><p>Jede Person mit einem anerkannten Pflegegrad 1 bis 5 hat gesetzlichen Anspruch nach § 40 SGB XI. Es spielt keine Rolle, ob ein Pflegedienst genutzt wird oder nicht.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Wie lange dauert die Bearbeitung?
+          <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+        </button>
+        <div class="faq-a"><p>In der Regel erhalten Sie innerhalb weniger Werktage eine Genehmigung von Ihrer Pflegekasse. Die erste Lieferung erfolgt dann innerhalb von 2–4 Werktagen nach Genehmigung.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Was ist mit den wiederverwendbaren Bettschutzeinlagen?
+          <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+        </button>
+        <div class="faq-a"><p>Wir beantragen immer zusätzlich bis zu 5 wiederverwendbare Bettschutzeinlagen. Diese werden von vielen Kassen genehmigt und sind besonders praktisch als Ergänzung zu den Einmalartikeln.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Kann ich jederzeit kündigen?
+          <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+        </button>
+        <div class="faq-a"><p>Ja. Sie können Ihr Pflegekörbchen jederzeit ohne Angabe von Gründen kündigen. Es gibt keine Mindestlaufzeit und keine Kündigungsfristen.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Welche Unterlagen brauche ich für den Antrag?
+          <span class="faq-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+        </button>
+        <div class="faq-a"><p>Sie benötigen Ihren Pflegegrad, Ihre Krankenversicherungsnummer und Ihre Lieferadresse. Alles andere übernehmen wir – kein Papierkram, kein Gang zur Kasse.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BEWERTUNGEN -->
+<section class="cream">
+  <div class="wrap">
+    <div style="text-align:center;margin-bottom:3rem">
+      <div class="sec-label">Erfahrungsberichte</div>
+      <h2>Was unsere Kunden sagen</h2>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>„Ich hätte nicht gedacht, dass es so einfach sein kann. Mutter hat Pflegegrad 2 und wir wussten gar nicht, dass ihr ein Pflegekörbchen zusteht. Alles war in 10 Minuten erledigt."</blockquote>
+        <div class="reviewer">
+          <div class="avatar">SM</div>
+          <div>
+            <div class="rev-name">Sandra M.</div>
+            <div class="rev-loc">Köln · pflegt ihre Mutter (Pflegegrad 2)</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>„Das Komfortkörbchen kommt jeden Monat pünktlich. Seit wir die Nitrilhandschuhe haben, keine Hautprobleme mehr. Die wiederverwendbaren Einlagen wurden auch alle 5 genehmigt!"</blockquote>
+        <div class="reviewer">
+          <div class="avatar">KR</div>
+          <div>
+            <div class="rev-name">Klaus R.</div>
+            <div class="rev-loc">Hamburg · Pflegegrad 3</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>„Pflegekörbchen hat erklärt, was unserem Vater zusteht, alles für uns beantragt – jetzt läuft sein Körbchen einfach von selbst. Das nimmt uns wirklich Arbeit ab."</blockquote>
+        <div class="reviewer">
+          <div class="avatar">FÖ</div>
+          <div>
+            <div class="rev-name">Familie Özdemir</div>
+            <div class="rev-loc">Berlin · Vater Pflegegrad 4</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BLOCK -->
+<div class="cta-block">
+  <div class="wrap" style="padding-top:0;padding-bottom:0;text-align:center">
+    <h2 style="color:#fff">Jetzt Ihr Pflegekörbchen beantragen</h2>
+    <p>100 % kostenlos · Kein Eigenanteil · Monatlich geliefert</p>
+    <a class="btn" href="#DEIN-LINK-HIER" target="_blank" rel="noopener" style="font-size:1rem;padding:15px 34px;background:#fff;color:var(--g900)">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      Kostenlos beantragen
+    </a>
+    <div class="cta-note">Genehmigung in der Regel in wenigen Werktagen · Jederzeit kündbar</div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-in">
+    <div class="footer-logo">Pflege<span>körbchen</span></div>
+    <div class="footer-links">
+      <a href="/impressum">Impressum</a>
+      <a href="/datenschutz">Datenschutz</a>
+      <a href="/agb">AGB</a>
+      <a href="mailto:hallo@pflegekorbchen.de">hallo@pflegekorbchen.de</a>
+    </div>
+  </div>
+  <div class="footer-in" style="padding-top:0">
+    <div class="footer-copy">© 2025 Pflegekörbchen · Delmenhorster Str. 3c, 50735 Köln · Alle Rechte vorbehalten.</div>
+  </div>
+</footer>
+
+<!-- COOKIE BANNER (DSGVO) -->
+<div class="cookie-bar" id="cookieBar">
+  <p>Wir verwenden Cookies, um unsere Website zu verbessern. Weitere Informationen finden Sie in unserer <a href="/datenschutz">Datenschutzerklärung</a>.</p>
+  <div class="cookie-actions">
+    <button class="cookie-decline" onclick="closeCookie()">Ablehnen</button>
+    <button class="cookie-accept" onclick="acceptCookie()">Akzeptieren</button>
+  </div>
+</div>
+
+<script>
+function toggleFaq(btn){
+  var item=btn.parentElement;
+  var isOpen=item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(function(el){el.classList.remove('open')});
+  if(!isOpen)item.classList.add('open');
+}
+
+function acceptCookie(){
+  localStorage.setItem('cookie_consent','accepted');
+  document.getElementById('cookieBar').style.display='none';
+}
+function closeCookie(){
+  localStorage.setItem('cookie_consent','declined');
+  document.getElementById('cookieBar').style.display='none';
+}
+if(localStorage.getItem('cookie_consent')){
+  document.getElementById('cookieBar').style.display='none';
+}
+</script>
+</body>
+</html>
